@@ -1,0 +1,9 @@
+class Humano():
+    def __init__(self,nombre):
+        self.nombre=nombre
+        
+    def hablar(self):
+        print 'hola humano llamado',self.nombre
+        
+elkin=Humano('kynovampiro')
+elkin.hablar()
