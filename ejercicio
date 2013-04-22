@@ -1,9 +1,32 @@
+import os
+import re
+
+
+ 
 class Humano():
-    def __init__(self,nombre):
-        self.nombre=nombre
+    def __init__(self):
+        pass
+    def crear(self):
+        archivo=open('datos.csv','a')
+        archivo.close()
         
-    def hablar(self):
-        print 'hola humano llamado',self.nombre
+#     
+
+    def grabar(self):
+        archivo=open('datos.csv','a')
+        tx1=raw_input('como te llamas')
+        print tx1
+        archivo.write(tx1)
+        archivo.write(',')
+        print 'hola',tx1,'un gusto a saludarte'
+        tx2=raw_input('y dime que haces')
+        print tx2
+        archivo.write(tx2)
+        archivo.write('\n')
+        archivo.close()
         
-elkin=Humano('kynovampiro')
-elkin.hablar()
+        
+        
+tex1=Humano()
+tex1.crear()
+tex1.grabar()
