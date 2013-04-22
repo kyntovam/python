@@ -2,7 +2,7 @@
 ###kyno
 
 import os
-import re
+
 
 
  
@@ -28,8 +28,23 @@ class Humano():
         archivo.write('\n')
         archivo.close()
         
+    def listar(self):
+        leer=open('datos.csv')
+#        print leer.read()
+        for i in leer:
+            print i
+        leer.close()    
+    def conver(self):
+        leer=open('datos.csv')
+        lista={}
+        for i in leer:
+           print i
+        lista.insert(i)   
+            
+               
         
         
 tex1=Humano()
 tex1.crear()
 tex1.grabar()
+tex1.listar()
