@@ -18,7 +18,7 @@ pygame.display.set_caption("Modulo de fuentes")
 reloj = pygame.time.Clock()
  
 fuente = pygame.font.Font(None, 30)
-texto1 = fuente.render('texto para vargar', 0, (255, 255, 255))
+texto1 = fuente.render('texto para vargar', 0, (255, 255, 255)) ## editar esta linea
  
  
 while True:
