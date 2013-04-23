@@ -1,0 +1,11 @@
+import csv
+import random
+
+entrada = open('datos.csv')
+tabla = []
+for fila in csv.reader(entrada):
+    tabla.append(fila)
+   
+random.shuffle(tabla)
+print tabla
+entrada.close()
