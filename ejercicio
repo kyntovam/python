@@ -1,10 +1,12 @@
-###juego del robot version 1.0
-###kyno
-
-import os
-
-
-
+import pygame
+from pygame.locals import *
+import sys
+import csv
+import random
+ 
+ 
+ 
+ 
  
 class Humano():
     def __init__(self):
@@ -33,13 +35,17 @@ class Humano():
 #        print leer.read()
         for i in leer:
             print i
-        leer.close()    
+        leer.close()   
+         
     def conver(self):
         leer=open('datos.csv')
-        lista={}
-        for i in leer:
-           print i
-        lista.insert(i)   
+        lista=[]
+        for i in csv.reader(leer):
+            lista.append(i)
+        random.shuffle(lista)    
+        print lista
+        print len(lista)
+              
             
                
         
@@ -47,4 +53,6 @@ class Humano():
 tex1=Humano()
 tex1.crear()
 tex1.grabar()
-tex1.listar()
+#tex1.listar()
+tex1.conver()
+
