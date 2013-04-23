@@ -5,7 +5,9 @@ import csv
 import random
  
  
- 
+ancho=500
+alto=500
+
  
  
 class Humano():
@@ -45,7 +47,29 @@ class Humano():
         random.shuffle(lista)    
         print lista
         print len(lista)
-              
+
+
+
+    
+
+
+
+
+def main(): 
+    pygame.init()
+    pantalla=pygame.display.set_mode((ancho,alto))
+    pygame.display.set_caption('esto es un juego')
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type==QUIT:
+                sys.exit(0)
+    return 0
+if __name__=='__main__':
+    pygame.init()
+    main()
+
+                         
             
                
         
