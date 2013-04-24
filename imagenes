@@ -1,5 +1,11 @@
 import pygame
+import csv
+import random
 from pygame.locals import *
+ 
+white    = ( 255, 255, 255) 
+col =(20,50,100)
+ 
  
 def cargar():
     leer=open('datos.csv','a')
@@ -12,21 +18,72 @@ def cargar():
 
 pygame.init()
  
-pantalla = pygame.display.set_mode((450,300),0,32)
+pantalla = pygame.display.set_mode((500,500),0,10)
 pygame.display.set_caption("Modulo de fuentes")
+imagen =pygame.image.load('cat1.png')
+arriba,abajo,izq,der=False,False,False,False
+vx,vy =0,0
+x,y =30,0
+exit=False
+
  
 reloj = pygame.time.Clock()
  
-fuente = pygame.font.Font(None, 30)
-texto1 = fuente.render('texto para vargar', 0, (255, 255, 255)) ## editar esta linea
+fuente = pygame.font.Font(None, 40)
+entrada=open('datos11.csv')
+tabla=[]
+for fila in csv.reader(entrada):
+    tabla.append(fila)
+    random.shuffle(tabla)
+
+entrada.close()
+
+
+texto1 = fuente.render(str(tabla[1]), 20, (255, 255, 255))## carga el texto en la ventana
  
  
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
-    reloj.tick(20)
-    pantalla.blit(texto1, (100,100))
-    cargar()
-    pygame.display.update()
+            
+        if event.type==pygame.KEYDOWN:
+            if event.key==pygame.K_UP:
+                arriba=True
+                vy=-5
+            if event.key==pygame.K_DOWN:
+                abajo=True
+                vy=5
+            if event.key==pygame.K_RIGHT:
+                dere=True
+                vx=-5
+            if event.key==pygame.K_LEFT:
+                izq=True
+                vx=5
+         
+        if event.type==pygame.KEYUP:
+            if event.key==pygame.K_UP:
+                arriba=False
+                vy=0
+            if event.key==pygame.K_DOWN:
+                abajo=False
+                vy=0
+            if event.key==pygame.K_RIGHT:
+                dere=False
+                vx=0
+            if event.key==pygame.K_LEFT:
+                izq=False
+                vx=0
     
+    
+    x+=vy
+    y+=vy
+    pantalla.fill(col)
+    pantalla.blit(texto1, (x,100))## esto se puede mover pasando parametros    
+#    pantalla.blit(imagen,pygame.mouse.get_pos()) si quiero mover con el mouse
+    pantalla.blit(imagen,(x,100))
+    reloj.tick(20)
+    
+    cargar()
+   
+    pygame.display.update()
